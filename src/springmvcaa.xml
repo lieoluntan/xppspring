@@ -19,6 +19,7 @@
     http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- <bean name="/hh" class="com.xpp.control.helloControl"></bean> -->
+    <!-- <mvc:annotation-driven /> -->
     
     <bean name="/aaDepartment" class="com.YXcrm.controller.DepartmentController"></bean>
     

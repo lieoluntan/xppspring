@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.YXcrm.model.BackResult;
 import com.YXcrm.model.Department;
@@ -158,6 +161,48 @@ public class DepartmentController extends HttpServlet  implements Controller{
   public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
       throws Exception {
     // TODO Auto-generated method stub
-    return null;
-  }
+    response.setContentType("text/html;charset=utf-8");
+    PrintWriter out = response.getWriter();
+
+    String qqiu = request.getParameter("qqiu");
+
+    if (qqiu.equals("add") || qqiu.equals("delete") || qqiu.equals("edit")
+            || qqiu.equals("getOne") || qqiu.equals("on_off")) {
+        T_DataControl t_data = new T_DataControl();
+        String str = t_data.getRequestPayload(request);
+        Department department = new Department();
+        if (str != null && str != "" && str.length() != 0) {
+            Map<String, Object> map = t_data.JsonStrToMap(str);
+            T_DataMap2Bean t_map2bean = new T_DataMap2Bean();
+            department = t_map2bean.MapToDepartment(map);
+            department.setOpenAndclose((String) map.get("openAndclose"));
+        } else {
+            System.out.println("前台传入数据为空，请联前台传入post请求体数系管理员！");
+        }
+        qqiuchocie(qqiu, department);
+    } else if (qqiu.equals("list")) {
+        ArrayList<Department> resultList = departmentService.getList();
+        backResult.setMessage("信息值：成功");
+        backResult.setQingqiu("list查询列表");
+        backResult.setData(resultList);
+    } else {
+        System.out.println("qqiu请求参数  " + qqiu + "  不规范");
+    }
+    Gson gson = new Gson();
+    // 4 执行完qqiuChoice里面操作后的全局返回值backResult对象,转成json格式
+    String back = gson.toJson(backResult);
+    System.out.println("最后back值是：" + back);
+    // 5 将json格式的back传给前台
+    out.write(back);
+    out.flush();
+    out.close();
+    
+//    return null;
+    ModelAndView mview = new ModelAndView(back);
+//    ModelAndView view = new ModelAndView("path:ok"); 
+    return mview;
+//    String viewName = getViewNameForRequest(request);
+//    return new ModelAndView(viewName, RequestContextUtils.getInputFlashMap(request));
+//    return new ResponseEntity<String>(back,HttpStatus.OK);
+  }//end method ModelAndView
 }//end class
