@@ -232,7 +232,7 @@ public class T_DataMap2Bean {
     
     String openAndclose = (String) map.get("openAndclose");
     String id = (String)map.get("studentID");
-    Integer studentID=Integer.parseInt(id) ;
+    Integer studentID=Integer.parseInt(id);
     
     YXstudent yxstudent = new YXstudent(uuid, name, sex, phone, grade, school, weixin, parentRela, parentName, parentPhone, parentWeixin, 
         parentRela2, parentName2, parentPhone2, parentWeixin2, empUuid, rank, source, courseYX);
