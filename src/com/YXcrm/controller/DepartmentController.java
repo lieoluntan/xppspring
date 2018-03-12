@@ -48,41 +48,41 @@ public class DepartmentController extends HttpServlet{
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-
-		String qqiu = request.getParameter("qqiu");
-
-		if (qqiu.equals("add") || qqiu.equals("delete") || qqiu.equals("edit")
-				|| qqiu.equals("getOne") || qqiu.equals("on_off")) {
-			T_DataControl t_data = new T_DataControl();
-			String str = t_data.getRequestPayload(request);
-			Department department = new Department();
-			if (str != null && str != "" && str.length() != 0) {
-				Map<String, Object> map = t_data.JsonStrToMap(str);
-				T_DataMap2Bean t_map2bean = new T_DataMap2Bean();
-				department = t_map2bean.MapToDepartment(map);
-				department.setOpenAndclose((String) map.get("openAndclose"));
-			} else {
-				System.out.println("前台传入数据为空，请联前台传入post请求体数系管理员！");
-			}
-			qqiuchocie(qqiu, department);
-		} else if (qqiu.equals("list")) {
-			ArrayList<Department> resultList = departmentService.getList();
-			backResult.setMessage("信息值：成功");
-			backResult.setQingqiu("list查询列表");
-			backResult.setData(resultList);
-		} else {
-			System.out.println("qqiu请求参数  " + qqiu + "  不规范");
-		}
-		Gson gson = new Gson();
-		// 4 执行完qqiuChoice里面操作后的全局返回值backResult对象,转成json格式
-		String back = gson.toJson(backResult);
-		System.out.println("最后back值是：" + back);
-		// 5 将json格式的back传给前台
-		out.write(back);
-		out.flush();
-		out.close();
+//		response.setContentType("text/html;charset=utf-8");
+//		PrintWriter out = response.getWriter();
+//
+//		String qqiu = request.getParameter("qqiu");
+//
+//		if (qqiu.equals("add") || qqiu.equals("delete") || qqiu.equals("edit")
+//				|| qqiu.equals("getOne") || qqiu.equals("on_off")) {
+//			T_DataControl t_data = new T_DataControl();
+//			String str = t_data.getRequestPayload(request);
+//			Department department = new Department();
+//			if (str != null && str != "" && str.length() != 0) {
+//				Map<String, Object> map = t_data.JsonStrToMap(str);
+//				T_DataMap2Bean t_map2bean = new T_DataMap2Bean();
+//				department = t_map2bean.MapToDepartment(map);
+//				department.setOpenAndclose((String) map.get("openAndclose"));
+//			} else {
+//				System.out.println("前台传入数据为空，请联前台传入post请求体数系管理员！");
+//			}
+//			qqiuchocie(qqiu, department);
+//		} else if (qqiu.equals("list")) {
+//			ArrayList<Department> resultList = departmentService.getList();
+//			backResult.setMessage("信息值：成功");
+//			backResult.setQingqiu("list查询列表");
+//			backResult.setData(resultList);
+//		} else {
+//			System.out.println("qqiu请求参数  " + qqiu + "  不规范");
+//		}
+//		Gson gson = new Gson();
+//		// 4 执行完qqiuChoice里面操作后的全局返回值backResult对象,转成json格式
+//		String back = gson.toJson(backResult);
+//		System.out.println("最后back值是：" + back);
+//		// 5 将json格式的back传给前台
+//		out.write(back);
+//		out.flush();
+//		out.close();
 	}
 
 	private void qqiuchocie(String qqiu, Department department) {
@@ -160,7 +160,7 @@ public class DepartmentController extends HttpServlet{
 		}
 	}
 
-  @RequestMapping("/handleRequest")
+  @RequestMapping("/aaDepartment")
   public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response,String qqiu)
       throws Exception {
     // TODO Auto-generated method stub

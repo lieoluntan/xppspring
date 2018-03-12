@@ -114,7 +114,6 @@ public class YXstudentDaoImpl implements YXstudentDao{
           yxstudent.setCourseYX(rs.getString("courseYX"));
           
           yxstudent.setOpenAndclose(rs.getString("openAndclose"));
-          yxstudent.setEmpName(rs.getString("empName"));
           
           yxstuList.add(yxstudent);
         }
