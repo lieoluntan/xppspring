@@ -13,8 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.YXcrm.model.BackResult;
@@ -29,7 +30,9 @@ import com.google.gson.Gson;
  * @author 刘鑫
  * @date 2018-1-29 14:19
  */
-public class DepartmentController extends HttpServlet  implements Controller{
+@Controller
+@RequestMapping("/")
+public class DepartmentController extends HttpServlet{
 	private static final long serialVersionUID = -1060747765670586355L;
 	
 	Logger logger = Logger.getLogger(DepartmentController.class);
@@ -157,14 +160,12 @@ public class DepartmentController extends HttpServlet  implements Controller{
 		}
 	}
 
-  @Override
-  public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+  @RequestMapping("/handleRequest")
+  public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response,String qqiu)
       throws Exception {
     // TODO Auto-generated method stub
     response.setContentType("text/html;charset=utf-8");
     PrintWriter out = response.getWriter();
-
-    String qqiu = request.getParameter("qqiu");
 
     if (qqiu.equals("add") || qqiu.equals("delete") || qqiu.equals("edit")
             || qqiu.equals("getOne") || qqiu.equals("on_off")) {
