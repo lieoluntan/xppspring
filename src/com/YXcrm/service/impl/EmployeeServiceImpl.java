@@ -25,7 +25,7 @@ import com.YXcrm.service.EmployeeService;
 @Service("employeeServiceImpl")
 public class EmployeeServiceImpl implements EmployeeService {
 	@Resource(name="employeeDaoImpl")
-	private EmployeeDao employeeDao = new EmployeeDaoImpl();
+	private EmployeeDao employeeDao;
 	private NameReEmpDao nameReEmpDao = new NameReEmpDaoImpl();
 	Logger logger = Logger.getLogger(EmployeeServiceImpl.class);
 	@Override

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.YXcrm.dao.YXstudentDao;
 import com.YXcrm.model.Employee;
 import com.YXcrm.model.YXstudent;
@@ -19,7 +21,7 @@ import com.YXcrm.utility.DBUtility;
  * @version 创建时间：2018-2-22 下午6:11:18
  * 类说明
  */
-
+@Repository("yXstudentDao")
 public class YXstudentDaoImpl implements YXstudentDao{
   
   private Connection connection;

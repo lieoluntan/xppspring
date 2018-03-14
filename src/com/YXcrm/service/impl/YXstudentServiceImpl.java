@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.YXcrm.dao.YXstudentDao;
 import com.YXcrm.dao.impl.YXstudentDaoImpl;
@@ -22,10 +25,10 @@ import com.YXcrm.utility.M_msg;
  * @version 创建时间：2018-2-22 下午6:07:29
  * 类说明
  */
-
+@Service("yXstudentServiceImpl")
 public class YXstudentServiceImpl implements YXstudentService{
-  
-  private YXstudentDao yxstudentDao = new YXstudentDaoImpl();
+  @Resource(name="yXstudentDao")
+  private YXstudentDao yxstudentDao;
   public M_msg m_msg = new M_msg();
   Logger logger = Logger.getLogger(YXstudentServiceImpl.class);
   

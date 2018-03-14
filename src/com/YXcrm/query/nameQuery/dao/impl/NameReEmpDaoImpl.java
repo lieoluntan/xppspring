@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 
 import com.YXcrm.model.Employee;
 import com.YXcrm.query.nameQuery.dao.NameReEmpDao;
@@ -20,6 +22,7 @@ import com.YXcrm.utility.DBUtility;
  * @version 创建时间：2018-1-5 下午4:43:11
  * 
  */
+
 public class NameReEmpDaoImpl implements NameReEmpDao {
 	private Connection connection;
 

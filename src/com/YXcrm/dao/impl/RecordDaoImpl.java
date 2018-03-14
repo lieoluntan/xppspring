@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.YXcrm.dao.RecordDao;
 import com.YXcrm.model.Record;
 import com.YXcrm.utility.DBUtility;
@@ -17,7 +19,7 @@ import com.YXcrm.utility.DBUtility;
  * @version 创建时间：2018-2-26 下午6:27:53
  * 类说明
  */
-
+@Repository("recordDaoImpl")
 public class RecordDaoImpl implements RecordDao{
   
   private Connection connection;

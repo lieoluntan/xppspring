@@ -3,7 +3,10 @@ package com.YXcrm.service.impl;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.YXcrm.dao.RecordDao;
 import com.YXcrm.dao.YXstudentDao;
@@ -20,10 +23,10 @@ import com.YXcrm.utility.M_msg;
  * @version 创建时间：2018-2-26 下午5:40:56
  * 类说明
  */
-
+@Service("recordServiceImpl")
 public class RecordServiceImpl implements RecordService{
-  
-  private RecordDao recordDao = new RecordDaoImpl();
+  @Resource(name="recordDaoImpl")
+  private RecordDao recordDao;
   private YXstudentDao yxstudentDao = new YXstudentDaoImpl();
   public M_msg m_msg = new M_msg();
   Logger logger = Logger.getLogger(RecordServiceImpl.class);

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +38,8 @@ import com.google.gson.Gson;
 public class RecordController extends HttpServlet  {
   
   private static final long serialVersionUID = 8566962711368547358L;
-  RecordService recordService = new RecordServiceImpl();
+  @Resource(name="recordServiceImpl")
+  RecordService recordService;
   BackResult backResult = new BackResult("信息值,默认", "请求值,默认", null);
   public M_msg m_msg = new M_msg();
   Logger logger = Logger.getLogger(RecordController.class);

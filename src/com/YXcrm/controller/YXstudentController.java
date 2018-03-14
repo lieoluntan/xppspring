@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +38,8 @@ import com.google.gson.Gson;
 @Controller
 @RequestMapping("/")
 public class YXstudentController extends HttpServlet{
-  
-  YXstudentService yxstudentService=new YXstudentServiceImpl();
+  @Resource(name="yXstudentServiceImpl")
+  YXstudentService yxstudentService;
   DphoneService dps=new DphoneServiceImpl();
   DweixinService dws= new DweixinServiceImpl();
   BackResult backResult = new BackResult("信息值：默认","请求值：默认",null);
