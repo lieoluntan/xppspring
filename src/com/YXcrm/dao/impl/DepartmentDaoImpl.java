@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.YXcrm.dao.DepartmentDao;
 import com.YXcrm.model.Department;
 import com.YXcrm.utility.DBUtility;
@@ -16,6 +18,7 @@ import com.YXcrm.utility.DBUtility;
  * @author 刘鑫
  * @date 2018-1-29 11：11
  */
+@Repository("departmentDaoImpl")
 public class DepartmentDaoImpl implements DepartmentDao {
 	private Connection connection;
 	boolean daoFlag = false;

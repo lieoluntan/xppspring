@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,8 +37,8 @@ public class DepartmentController extends HttpServlet{
 	private static final long serialVersionUID = -1060747765670586355L;
 	
 	Logger logger = Logger.getLogger(DepartmentController.class);
-
-	DepartmentService departmentService = new DepartmentServiceImpl();
+	@Resource(name="departmentServiceImpl")
+	private DepartmentService departmentService;
 	BackResult backResult = new BackResult("信息值,默认", "请求值,默认", null);
 
 	protected void doGet(HttpServletRequest request,

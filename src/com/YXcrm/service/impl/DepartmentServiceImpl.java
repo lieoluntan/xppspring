@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.YXcrm.controller.EmployeeControl;
 import com.YXcrm.dao.DepartmentDao;
@@ -16,8 +19,10 @@ import com.YXcrm.service.DepartmentService;
  * @author 刘鑫
  * @date 2018-1-29 13:23
  */
+@Service("departmentServiceImpl")
 public class DepartmentServiceImpl implements DepartmentService {
-	private DepartmentDao departmentDao = new DepartmentDaoImpl();
+	@Resource(name="departmentDaoImpl")
+	private DepartmentDao departmentDao;
 	Logger logger = Logger.getLogger(DepartmentServiceImpl.class);
 
 	@Override

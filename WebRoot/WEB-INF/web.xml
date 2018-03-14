@@ -10,6 +10,9 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   
   <servlet>
   	<servlet-name>DispatcherServlet</servlet-name>
@@ -19,12 +22,15 @@
   		<param-value>classpath:springmvcaa.xml</param-value>
   	</init-param>
   </servlet>
-  
   <servlet-mapping>
   	<servlet-name>DispatcherServlet</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   
+   <context-param>
+ 	<param-name>contextConfigLocation</param-name> 
+ 	<param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
   
   <!-- log4j日志使用配置 start -->
   <servlet>
