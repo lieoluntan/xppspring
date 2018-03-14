@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +35,7 @@ public class EmployeeControl extends HttpServlet {
   EmployeeService employeeService=new EmployeeServiceImpl();
   BackResult backResult = new BackResult("信息值：默认","请求值：默认",null);
   Logger logger = Logger.getLogger(EmployeeControl.class);
-  
+  @Resource(name="employeeServiceImpl")
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 

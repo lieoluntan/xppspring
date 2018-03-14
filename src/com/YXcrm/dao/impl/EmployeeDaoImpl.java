@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.YXcrm.dao.EmployeeDao;
@@ -20,7 +21,7 @@ import com.YXcrm.utility.DBUtility;
  * @author 作者 xpp
  * @version 创建时间：2017-10-13 下午4:59:08 类说明
  */
-
+@Repository("employeeDaoImpl")
 public class EmployeeDaoImpl implements EmployeeDao {
 
   private Connection connection;

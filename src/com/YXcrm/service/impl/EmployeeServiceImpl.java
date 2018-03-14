@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.YXcrm.dao.EmployeeDao;
 import com.YXcrm.dao.impl.EmployeeDaoImpl;
@@ -19,9 +22,9 @@ import com.YXcrm.service.EmployeeService;
  * @author 作者 xpp
  * @version 创建时间：2017-10-13 下午4:50:04 类说明
  */
-
+@Service("employeeServiceImpl")
 public class EmployeeServiceImpl implements EmployeeService {
-
+	@Resource(name="employeeDaoImpl")
 	private EmployeeDao employeeDao = new EmployeeDaoImpl();
 	private NameReEmpDao nameReEmpDao = new NameReEmpDaoImpl();
 	Logger logger = Logger.getLogger(EmployeeServiceImpl.class);
