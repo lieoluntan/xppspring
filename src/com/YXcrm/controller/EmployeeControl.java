@@ -184,7 +184,7 @@ public class EmployeeControl extends HttpServlet {
 
   }// end method qqiuChoice
 
-  @RequestMapping("/aaEmpployee")
+  @RequestMapping("/aaEmpployee")  
   public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response,String qqiu)
       throws Exception {
     // TODO Auto-generated method stub
