@@ -40,7 +40,8 @@ import com.google.gson.Gson;
 public class YXstudentController extends HttpServlet{
   @Resource(name="yXstudentServiceImpl")
   YXstudentService yxstudentService;
-  DphoneService dps=new DphoneServiceImpl();
+  @Resource(name="dphoneServiceImpl")
+  DphoneService dps;
   DweixinService dws= new DweixinServiceImpl();
   BackResult backResult = new BackResult("信息值：默认","请求值：默认",null);
   public M_msg m_msg = new M_msg();

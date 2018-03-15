@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.YXcrm.dao.DphoneDao;
 import com.YXcrm.model.Dphone;
 import com.YXcrm.model.Record;
@@ -20,6 +22,7 @@ import com.YXcrm.utility.DBUtility;
  * @date 2018-2-8 下午2:28:39
  * @version
  */
+@Repository("dphoneDaoImpl")
 public class DphoneDaoImpl implements DphoneDao {
 	private Connection connection;
 	boolean daoFlag = false;

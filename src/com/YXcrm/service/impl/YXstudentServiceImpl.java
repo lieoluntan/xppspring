@@ -27,7 +27,7 @@ import com.YXcrm.utility.M_msg;
  */
 @Service("yXstudentServiceImpl")
 public class YXstudentServiceImpl implements YXstudentService{
-  @Resource(name="yXstudentDao")
+  @Resource(name="yXstudentDaoImpl")
   private YXstudentDao yxstudentDao;
   public M_msg m_msg = new M_msg();
   Logger logger = Logger.getLogger(YXstudentServiceImpl.class);

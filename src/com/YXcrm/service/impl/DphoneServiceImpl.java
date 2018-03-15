@@ -6,6 +6,10 @@ package com.YXcrm.service.impl;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import com.YXcrm.dao.DphoneDao;
 import com.YXcrm.dao.EmployeeDao;
 import com.YXcrm.dao.YXstudentDao;
@@ -24,10 +28,16 @@ import com.YXcrm.service.DphoneService;
  * @date 2018-2-8 下午2:36:42
  * @version
  */
+@Service("dphoneServiceImpl")
 public class DphoneServiceImpl implements DphoneService {
-	private DphoneDao dphoneDao = new DphoneDaoImpl();
-	private YXstudentDao yxstudentDao = new YXstudentDaoImpl();
-	private EmployeeDao employeeDao=new EmployeeDaoImpl();
+	@Resource(name="dphoneDaoImpl")
+	private DphoneDao dphoneDao;
+	
+	@Resource(name="yXstudentDaoImpl")
+	private YXstudentDao yxstudentDao;
+	
+	@Resource(name="employeeDaoImpl")
+	private EmployeeDao employeeDao;
 	
 	
 	/*
