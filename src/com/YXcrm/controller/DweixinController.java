@@ -8,11 +8,13 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,7 +38,8 @@ import com.google.gson.Gson;
 public class DweixinController extends HttpServlet {
 	private static final long serialVersionUID = -1060747765670586355L;
 	BackResult backResult = new BackResult("信息值,默认", "请求值,默认", null);
-	DweixinService dweixinService = new DweixinServiceImpl();
+	@Resource(name="dweixinServiceImpl")
+	DweixinService dweixinService;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -83,7 +86,7 @@ public class DweixinController extends HttpServlet {
 		out.flush();
 		out.close();
 	}
-
+	
 	private void qqiuchocie(String qqiu, Dweixin weixin) {
 	    boolean test = false;
 		boolean add = false;

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
+
 import com.YXcrm.dao.DweixinDao;
 import com.YXcrm.model.Dphone;
 import com.YXcrm.model.Dweixin;
@@ -20,6 +22,7 @@ import com.YXcrm.utility.DBUtility;
  * @date 2018-2-8 下午4:34:11
  * @version
  */
+@Repository("dweixinDaoImpl")
 public class DweixinDaoImpl implements DweixinDao {
 	private Connection connection;
 	boolean daoFlag = false;

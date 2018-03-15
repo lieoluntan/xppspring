@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +37,8 @@ import com.google.gson.Gson;
 public class DphoneController extends HttpServlet {
 	private static final long serialVersionUID = -1060747765670586355L;
 	BackResult backResult = new BackResult("信息值,默认", "请求值,默认", null);
-	DphoneService dphoneService = new DphoneServiceImpl();
+	@Resource(name="dphoneServiceImpl")
+	DphoneService dphoneService;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {

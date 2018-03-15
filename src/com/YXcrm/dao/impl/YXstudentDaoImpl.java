@@ -21,7 +21,7 @@ import com.YXcrm.utility.DBUtility;
  * @version 创建时间：2018-2-22 下午6:11:18
  * 类说明
  */
-@Repository("yXstudentDao")
+@Repository("yXstudentDaoImpl")
 public class YXstudentDaoImpl implements YXstudentDao{
   
   private Connection connection;
