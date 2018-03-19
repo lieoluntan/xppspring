@@ -10,9 +10,9 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <listener>
+<!--   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+  </listener> -->
   
   <servlet>
   	<servlet-name>DispatcherServlet</servlet-name>
@@ -27,10 +27,10 @@
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
   
-   <context-param>
+   <!-- <context-param>
  	<param-name>contextConfigLocation</param-name> 
  	<param-value>classpath:applicationContext.xml</param-value>
-  </context-param>
+  </context-param> -->
   
   <!-- log4j日志使用配置 start -->
   <servlet>

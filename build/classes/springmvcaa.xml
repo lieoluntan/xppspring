@@ -28,6 +28,9 @@
     
     <!-- < context:component-scan base-package = "com.xpp" /> -->
     <!-- 路径写到controller的上一层(扫描包) 后面根据需求更改-->
-    <context:component-scan base-package="com.YXcrm.controller"/>
+    <!-- <context:component-scan base-package="com.YXcrm.controller"/> -->
+    <context:component-scan base-package="com.YXcrm"/>
+    
+    <bean name="/aaMyYXstudent" class="com.YXcrm.query.controller.MyYXstudentController"></bean> 
 
 </beans>

@@ -4,12 +4,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.YXcrm.controller.YXstudentController;
 import com.YXcrm.model.BackResult;
@@ -25,8 +31,11 @@ import com.google.gson.Gson;
  * @author 作者 xpp
  * @version 创建时间：2018-2-23 下午4:31:25 类说明
  */
-
-public class MyYXstudentController extends HttpServlet {
+@Controller
+@RequestMapping("/")
+@Resource
+@Component
+public class MyYXstudentController extends HttpServlet implements org.springframework.web.servlet.mvc.Controller{
 
   MyYXstudentService myYXstudentService = new MyYXstudentServiceImpl();
   BackResult backResult = new BackResult("信息值：默认", "请求值：默认", null);
@@ -70,5 +79,43 @@ public class MyYXstudentController extends HttpServlet {
     out.flush();
     out.close();
   }// end method doPost 主入口
+
+  @Override
+  public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
+    // TODO Auto-generated method stub
+    response.setContentType("text/html;charset=utf-8");
+    PrintWriter out = response.getWriter();
+
+    String qqiu = request.getParameter("qqiu");
+    String empUuid = request.getParameter("empUuid");
+    if(qqiu.equals("test")){
+      backResult.setMessage("信息值：测试成功");
+      backResult.setQingqiu("test查询列表");
+    }
+    if (qqiu.equals("list") && empUuid != null && empUuid != "") {
+      ArrayList<YXstudent> resultList = myYXstudentService.getListByEmpUuid(empUuid);
+      backResult.setMessage("信息值：成功");
+      backResult.setQingqiu("list查询列表");
+      backResult.setData(resultList);
+    } else {
+      System.out.println("前台传入数据为空，请联系前台传入get请求体！");
+      backResult.setMessage("信息值：失败");
+      backResult.setQingqiu("list查询列表");
+      backResult.setData(new ArrayList<String>());
+    }
+    Gson gson = new Gson();
+
+    String back = gson.toJson(backResult);
+    System.out.println("最后back值是：" + back);
+
+    out.write(back);
+    out.flush();
+    out.close();
+    
+    ModelAndView mview = new ModelAndView(back);
+//  ModelAndView view = new ModelAndView("path:ok"); 
+  return mview;
+  }//end method
 
 }// end class
